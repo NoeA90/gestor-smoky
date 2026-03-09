@@ -6,65 +6,250 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{
-      --bg:#0b0f17; --card:#131a24; --accent:#9aff5c; --accent2:#5cf6ff; --danger:#ff5c5c;
-      --warm:#facc15; --muted:#9aa5b7; --border:#1c2533; --chip:#0d131d;
+      --bg:#0b0f17;
+      --card:#131a24;
+      --accent:#9aff5c;
+      --accent2:#5cf6ff;
+      --danger:#ff5c5c;
+      --warm:#facc15;
+      --muted:#9aa5b7;
+      --border:#1c2533;
+      --chip:#0d131d;
     }
     *{box-sizing:border-box;font-family:Inter,Roboto,Arial}
     body{margin:0;padding:22px;min-height:100vh;background:var(--bg);color:#fff}
     h1{margin:0 0 8px 0;font-size:22px;font-weight:900}
     .sub{color:var(--muted);font-size:13px;margin-bottom:14px;line-height:1.35}
-    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid var(--border);box-shadow:0 0 20px #0004;margin-bottom:16px}
-    .row{display:flex;gap:16px;flex-wrap:wrap}.box{flex:1;background:#0f141d;padding:14px;border-radius:12px;border:1px solid #1b2230;min-width:280px}
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      box-shadow:0 0 20px #0004;
+      margin-bottom:16px
+    }
+    .row{display:flex;gap:16px;flex-wrap:wrap}
+    .box{
+      flex:1;
+      background:#0f141d;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #1b2230;
+      min-width:280px
+    }
     .section-title{font-size:13px;font-weight:900;margin:0 0 10px 0;color:#c8ff9b}
-    input[type=file]{width:100%;padding:12px;background:#0d131d;border:1px dashed #2a3647;border-radius:10px;color:var(--muted);cursor:pointer}
+    input[type=file]{
+      width:100%;
+      padding:12px;
+      background:#0d131d;
+      border:1px dashed #2a3647;
+      border-radius:10px;
+      color:var(--muted);
+      cursor:pointer
+    }
     .hint{margin-top:8px;font-size:12px;color:var(--muted);line-height:1.35}
-    .btn-main{width:100%;padding:14px;font-size:15px;font-weight:1000;background:var(--accent);border:none;border-radius:10px;cursor:pointer;color:#121715;margin-top:14px}
-    .btn{padding:10px 12px;border-radius:10px;border:1px solid #273347;background:#0d131d;color:#fff;cursor:pointer;font-weight:900;font-size:13px}
-    .btn:hover{filter:brightness(1.08)} .btn-green{border-color:#2c6b2c} .btn-red{border-color:#6b2c2c} .btn-cyan{border-color:#2c6b6b} .btn-warm{border-color:#6b5a2c}
+    .btn-main{
+      width:100%;
+      padding:14px;
+      font-size:15px;
+      font-weight:1000;
+      background:var(--accent);
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      color:#121715;
+      margin-top:14px
+    }
+    .btn{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid #273347;
+      background:#0d131d;
+      color:#fff;
+      cursor:pointer;
+      font-weight:900;
+      font-size:13px
+    }
+    .btn:hover{filter:brightness(1.08)}
+    .btn-green{border-color:#2c6b2c}
+    .btn-red{border-color:#6b2c2c}
+    .btn-cyan{border-color:#2c6b6b}
+    .btn-warm{border-color:#6b5a2c}
     .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
-    .pill{padding:8px 10px;border-radius:999px;background:var(--chip);border:1px solid #1c2533;color:var(--muted);font-size:12px;font-weight:900}
-    .stats{display:grid;grid-template-columns:repeat(6,minmax(160px,1fr));gap:12px;margin-top:14px}
-    .stat{background:#0d131d;border:1px solid #1c2533;border-radius:14px;padding:12px}
-    .stat .label{font-size:12px;color:var(--muted);font-weight:900}.stat .value{font-size:28px;font-weight:1000;margin-top:6px}
-    .green{color:var(--accent)} .red{color:var(--danger)} .cyan{color:var(--accent2)} .warm{color:var(--warm)}
-    .summary{margin-top:12px;padding:12px;border-radius:12px;background:#0d131d;border:1px solid #1c2533;color:var(--muted);font-size:13px;line-height:1.45}
-    table{width:100%;margin-top:14px;border-collapse:collapse;background:#0d131d;border-radius:12px;overflow:hidden;border:1px solid #1c2533}
-    th,td{padding:10px;border-bottom:1px solid #1c2533;font-size:13px;vertical-align:top}
-    th{background:#16202c;font-weight:1000;color:#c8ff9b;position:sticky;top:0;z-index:1} tr:hover td{background:#141c27}
-    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-weight:1000;font-size:12px;border:1px solid;white-space:nowrap}
-    .b-active{color:var(--accent);border-color:#2c6b2c;background:#0c1b12} .b-inactive{color:var(--danger);border-color:#6b2c2c;background:#1b0c0c}
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background:var(--chip);
+      border:1px solid #1c2533;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(160px,1fr));
+      gap:12px;
+      margin-top:14px
+    }
+    .stat{
+      background:#0d131d;
+      border:1px solid #1c2533;
+      border-radius:14px;
+      padding:12px
+    }
+    .stat .label{font-size:12px;color:var(--muted);font-weight:900}
+    .stat .value{font-size:28px;font-weight:1000;margin-top:6px}
+    .green{color:var(--accent)}
+    .red{color:var(--danger)}
+    .cyan{color:var(--accent2)}
+    .warm{color:var(--warm)}
+    .summary{
+      margin-top:12px;
+      padding:12px;
+      border-radius:12px;
+      background:#0d131d;
+      border:1px solid #1c2533;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45
+    }
+    table{
+      width:100%;
+      margin-top:14px;
+      border-collapse:collapse;
+      background:#0d131d;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid #1c2533
+    }
+    th,td{
+      padding:10px;
+      border-bottom:1px solid #1c2533;
+      font-size:13px;
+      vertical-align:top
+    }
+    th{
+      background:#16202c;
+      font-weight:1000;
+      color:#c8ff9b;
+      position:sticky;
+      top:0;
+      z-index:1
+    }
+    tr:hover td{background:#141c27}
+    .badge{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-weight:1000;
+      font-size:12px;
+      border:1px solid;
+      white-space:nowrap
+    }
+    .b-active{color:var(--accent);border-color:#2c6b2c;background:#0c1b12}
+    .b-inactive{color:var(--danger);border-color:#6b2c2c;background:#1b0c0c}
     .b-warm{color:var(--warm);border-color:#6b5a2c;background:#1f1708}
-    .toast{position:fixed;right:18px;bottom:18px;background:#16202c;padding:12px 14px;border-radius:12px;opacity:0;transform:translateY(16px);pointer-events:none;transition:.25s;display:flex;gap:10px;align-items:center;border:1px solid #2a3647;max-width:520px}
-    .toast.show{opacity:1;transform:translateY(0);pointer-events:auto}.spinner{width:16px;height:16px;border-radius:50%;border:2px solid #44546a;border-top-color:var(--accent);animation:spin 1s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}} .optline{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:10px}
-    input[type=number]{width:160px;padding:8px;background:#0d131d;border-radius:10px;border:1px solid #1c2533;color:#fff;font-weight:900}
-    label.inline{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;font-weight:900}
-    .smallnote{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.35}.logoBox{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .logoPh{width:38px;height:38px;border-radius:10px;background:linear-gradient(180deg,#243044,#101827);border:1px solid #2a3647}
-    .filelist{margin-top:10px;display:flex;flex-direction:column;gap:6px}.fileitem{background:#0d131d;border:1px solid #1c2533;border-radius:10px;padding:8px 10px;font-size:12px;color:var(--muted);font-weight:800}
-    @media (max-width:1100px){ .stats{grid-template-columns:repeat(3,minmax(160px,1fr));} }
-    @media (max-width:900px){ .stats{grid-template-columns:repeat(2,minmax(160px,1fr));} }
+    .toast{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      background:#16202c;
+      padding:12px 14px;
+      border-radius:12px;
+      opacity:0;
+      transform:translateY(16px);
+      pointer-events:none;
+      transition:.25s;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid #2a3647;
+      max-width:520px
+    }
+    .toast.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    .spinner{
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      border:2px solid #44546a;
+      border-top-color:var(--accent);
+      animation:spin 1s linear infinite
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .optline{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    input[type=number]{
+      width:160px;
+      padding:8px;
+      background:#0d131d;
+      border-radius:10px;
+      border:1px solid #1c2533;
+      color:#fff;
+      font-weight:900
+    }
+    label.inline{
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-weight:900
+    }
+    .smallnote{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.35}
+    .logoBox{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .logoPh{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      background:linear-gradient(180deg,#243044,#101827);
+      border:1px solid #2a3647
+    }
+    .filelist{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+    .fileitem{
+      background:#0d131d;
+      border:1px solid #1c2533;
+      border-radius:10px;
+      padding:8px 10px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800
+    }
+    @media (max-width:1100px){
+      .stats{grid-template-columns:repeat(3,minmax(160px,1fr));}
+    }
+    @media (max-width:900px){
+      .stats{grid-template-columns:repeat(2,minmax(160px,1fr));}
+    }
   </style>
 </head>
 <body>
+
 <div class="logoBox">
-  <div class="logoPh"></div>
+  <div class="logoPh" title="Logo NEXO (placeholder)"></div>
   <div>
     <h1>NEXO SMOKY</h1>
-    <div class="sub">Fusiona: <b>Contactos Whaticket</b> + <b>Operaciones</b> → clasifica <b>JUGANDO</b>, <b>TIBIOS</b> y <b>FRÍOS</b> sin romper tu flujo actual.</div>
+    <div class="sub">
+      Fusiona: <b>Contactos Whaticket</b> + <b>Operaciones</b> → clasifica <b>JUGANDO</b>, <b>TIBIOS</b> y <b>FRÍOS</b> sin romper tu flujo actual.
+    </div>
   </div>
 </div>
+
 <div class="card">
   <div class="row">
     <div class="box">
       <div class="section-title">Operaciones / Cargas (CSV)</div>
       <input type="file" id="fileOps" accept=".csv" multiple />
-      <div class="hint">CSV de operaciones. Detecta separador <b>,</b> o <b>;</b>. Busca columnas tipo: <b>fecha, cantidad/monto, alias/usuario/jugador/titular</b>.</div>
+      <div class="hint">
+        CSV de operaciones. Detecta separador <b>,</b> o <b>;</b>. Busca columnas tipo:
+        <b>fecha, cantidad/monto, alias/usuario/jugador/titular</b>.
+      </div>
+
       <div class="optline">
         <button class="btn btn-cyan" id="addMoreOpsBtn" type="button">Agregar otro archivo de operaciones</button>
         <input type="file" id="fileOpsExtra" accept=".csv" multiple style="display:none" />
       </div>
+
       <div class="filelist" id="opsFilesList"></div>
+
       <div class="smallnote">
         ✅ Lógica mensual:
         <br><b>JUGANDO</b> = cargó en el <b>mes más reciente</b> detectado en los CSV subidos
@@ -72,21 +257,29 @@
         <br><b>FRÍO</b> = cargó hace <b>más de 1 mes</b> o no figura en operaciones
       </div>
     </div>
+
     <div class="box">
       <div class="section-title">Contactos Whaticket (CSV)</div>
       <input type="file" id="fileContacts" accept=".csv" />
-      <div class="hint">Debe exportar: <b>number,name,email,tags,metadata</b><br/>Ej name: <b>0011mar//Nombre Apellido</b> (alias = 0011mar)</div>
+      <div class="hint">
+        Debe exportar: <b>number,name,email,tags,metadata</b><br/>
+        Ej name: <b>0011mar//Nombre Apellido</b> (alias = 0011mar)
+      </div>
     </div>
+
     <div class="box" style="max-width:520px">
       <div class="section-title">Opciones</div>
+
       <div class="optline">
         <label class="inline"><input type="checkbox" id="exportOnlyNoActivos"> Exportar SOLO A CONTACTAR</label>
         <label class="inline"><input type="checkbox" id="showDebug"> Mostrar debug (console)</label>
       </div>
+
       <div class="optline">
         <div class="pill">Límite filas export (0 = sin límite)</div>
         <input type="number" id="limitRows" value="0" min="0" />
       </div>
+
       <div class="smallnote">
         ✅ ACTIVO se exporta como: <span class="badge b-active">JUGANDO</span><br/>
         ⚠ A CONTACTAR TIBIO: <span class="badge b-warm">TIBIO</span><br/>
@@ -95,7 +288,9 @@
       </div>
     </div>
   </div>
+
   <button id="processBtn" class="btn-main">Procesar y Comparar (sin colgar Chrome)</button>
+
   <div class="toolbar">
     <button class="btn btn-cyan" id="exportPlanillaBtn">Exportar Planilla Blanca (CSV)</button>
     <button class="btn btn-cyan" id="exportWhaticketBtn">Exportar CSV Whaticket (tags)</button>
@@ -104,101 +299,812 @@
     <button class="btn btn-warm" id="viewWarmBtn">Vista: Tibios</button>
     <button class="btn btn-red" id="viewNoActivosBtn">Vista: Fríos / A contactar</button>
   </div>
+
   <div class="stats">
-    <div class="stat"><div class="label">Contactos totales (WTK)</div><div class="value green" id="statContacts">0</div></div>
-    <div class="stat"><div class="label">Usuarios activos (mes actual)</div><div class="value cyan" id="statOpsActivos">0</div></div>
-    <div class="stat"><div class="label">Match JUGANDO (WTK)</div><div class="value green" id="statMatchActivos">0</div></div>
-    <div class="stat"><div class="label">A contactar total</div><div class="value red" id="statNoActivos">0</div></div>
-    <div class="stat"><div class="label">A contactar tibios</div><div class="value warm" id="statWarm">0</div></div>
-    <div class="stat"><div class="label">A contactar fríos</div><div class="value red" id="statCold">0</div></div>
+    <div class="stat">
+      <div class="label">Contactos totales (WTK)</div>
+      <div class="value green" id="statContacts">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">Usuarios activos (mes actual)</div>
+      <div class="value cyan" id="statOpsActivos">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">Match JUGANDO (WTK)</div>
+      <div class="value green" id="statMatchActivos">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">A contactar total</div>
+      <div class="value red" id="statNoActivos">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">A contactar tibios</div>
+      <div class="value warm" id="statWarm">0</div>
+    </div>
+    <div class="stat">
+      <div class="label">A contactar fríos</div>
+      <div class="value red" id="statCold">0</div>
+    </div>
   </div>
+
   <div id="summary" class="summary">Sin procesar.</div>
   <div id="results"></div>
 </div>
-<div id="toast" class="toast"><div class="spinner"></div><div id="toastText">Procesando...</div></div>
+
+<div id="toast" class="toast">
+  <div class="spinner"></div>
+  <div id="toastText">Procesando...</div>
+</div>
+
 <script>
 const toast = document.getElementById('toast');
 const toastText = document.getElementById('toastText');
 let toastTimer = null;
-function showToast(text, duration=2200) { if (toastTimer) clearTimeout(toastTimer); toastText.textContent = text; toast.classList.add('show'); toastTimer = setTimeout(()=>toast.classList.remove('show'), duration); }
-function escapeHtml(s) { if (s === null || s === undefined) return ''; return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function readFileText(file) { return new Promise((resolve, reject) => { const r = new FileReader(); r.onload = e => resolve(String(e.target.result || '')); r.onerror = reject; r.readAsText(file, 'utf-8'); }); }
-function downloadFile(content, fileName, mimeType) { const bom = mimeType.includes('csv') ? '﻿' : ''; const blob = new Blob([bom + content], { type: mimeType }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = fileName; document.body.appendChild(link); link.click(); document.body.removeChild(link); }
-function fileKey(f){ return [f.name, f.size, f.lastModified].join('|'); }
+
+function showToast(text, duration = 2200) {
+  if (toastTimer) clearTimeout(toastTimer);
+  toastText.textContent = text;
+  toast.classList.add('show');
+  toastTimer = setTimeout(() => toast.classList.remove('show'), duration);
+}
+
+function escapeHtml(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c]));
+}
+
+function readFileText(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = e => resolve(String(e.target.result || ''));
+    r.onerror = reject;
+    r.readAsText(file, 'utf-8');
+  });
+}
+
+function downloadFile(content, fileName, mimeType) {
+  const bom = mimeType.includes('csv') ? '\uFEFF' : '';
+  const blob = new Blob([bom + content], { type: mimeType });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function fileKey(f) {
+  return [f.name, f.size, f.lastModified].join('|');
+}
+
 let opsFilesSelected = [];
-function mergeFilesUnique(base, extra){ const map = new Map(); [...base, ...extra].forEach(f => map.set(fileKey(f), f)); return Array.from(map.values()); }
-function renderOpsFilesList(){ const el = document.getElementById('opsFilesList'); if (!opsFilesSelected.length){ el.innerHTML = '<div class="fileitem">Sin archivos de operaciones cargados.</div>'; return; } el.innerHTML = opsFilesSelected.map((f, i) => `<div class="fileitem">#${i+1} • ${escapeHtml(f.name)} • ${(f.size/1024).toFixed(1)} KB</div>`).join(''); }
-document.getElementById('fileOps').addEventListener('change', (e) => { opsFilesSelected = mergeFilesUnique([], Array.from(e.target.files || [])); renderOpsFilesList(); });
-document.getElementById('addMoreOpsBtn').addEventListener('click', () => document.getElementById('fileOpsExtra').click());
-document.getElementById('fileOpsExtra').addEventListener('change', (e) => { opsFilesSelected = mergeFilesUnique(opsFilesSelected, Array.from(e.target.files || [])); renderOpsFilesList(); });
+
+function mergeFilesUnique(base, extra) {
+  const map = new Map();
+  [...base, ...extra].forEach(f => map.set(fileKey(f), f));
+  return Array.from(map.values());
+}
+
+function renderOpsFilesList() {
+  const el = document.getElementById('opsFilesList');
+  if (!opsFilesSelected.length) {
+    el.innerHTML = '<div class="fileitem">Sin archivos de operaciones cargados.</div>';
+    return;
+  }
+
+  el.innerHTML = opsFilesSelected.map((f, i) =>
+    `<div class="fileitem">#${i+1} • ${escapeHtml(f.name)} • ${(f.size / 1024).toFixed(1)} KB</div>`
+  ).join('');
+}
+
+document.getElementById('fileOps').addEventListener('change', (e) => {
+  opsFilesSelected = mergeFilesUnique([], Array.from(e.target.files || []));
+  renderOpsFilesList();
+});
+
+document.getElementById('addMoreOpsBtn').addEventListener('click', () => {
+  document.getElementById('fileOpsExtra').click();
+});
+
+document.getElementById('fileOpsExtra').addEventListener('change', (e) => {
+  opsFilesSelected = mergeFilesUnique(opsFilesSelected, Array.from(e.target.files || []));
+  renderOpsFilesList();
+});
 
 const workerCode = `
-let STATE = { merged: [], activeSetSize: 0, contactsCount: 0, matchActivos: 0, noActivos: 0, warmCount: 0, coldCount: 0, opsRows: 0, latestMonthLabel: '', debug: {} };
-function detectDelimiter(text) { const lines = String(text||'').replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l => l.trim() !== ''); if (/^sep=;/i.test(lines[0] || '')) return ';'; if (/^sep=,/i.test(lines[0] || '')) return ','; const head = lines.slice(0, 5).join('\n'); const commas = (head.match(/,/g) || []).length; const semis  = (head.match(/;/g) || []).length; return semis > commas ? ';' : ','; }
-function parseCSVLine(line, delim) { const result = []; let cur = ''; let inQuotes = false; for (let i=0;i<line.length;i++){ const ch = line[i]; if (ch === '"') { if (inQuotes && line[i+1] === '"') { cur += '"'; i++; } else inQuotes = !inQuotes; continue; } if (ch === delim && !inQuotes) { result.push(cur); cur=''; continue; } cur += ch; } result.push(cur); return result; }
-function parseCSV(text) { const clean = String(text || '').replace(/\uFEFF/g,''); const delim = detectDelimiter(clean); const lines = clean.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l => l.trim() !== ''); const filtered = lines.filter(l => !/^sep=/i.test(l.trim())); if (filtered.length === 0) return { delim, headers: [], rows: [] }; const headers = parseCSVLine(filtered[0], delim).map(h => String(h||'').trim()); const rows = filtered.slice(1).map(l => parseCSVLine(l, delim)); return { delim, headers, rows }; }
-function findHeaderIndex(headersLower, candidates) { for (let i=0;i<headersLower.length;i++){ const h = headersLower[i]; if (candidates.some(c => h === c || h.includes(c))) return i; } return -1; }
-function cleanAliasBase(s) { if (!s) return ''; return String(s).toLowerCase().trim().replace(/\uFEFF/g,'').replace(/\s+/g,' ').replace(/["']/g,'').replace(/^[^a-z0-9]+|[^a-z0-9]+$/g,''); }
-function getAliasFromContactName(name) { const raw = cleanAliasBase(name); if (!raw) return ''; if (raw.includes('//')) return cleanAliasBase(raw.split('//')[0]); return raw; }
-function parseNumberLoose(v) { let s = String(v ?? '').trim(); if (!s) return 0; s = s.replace(/\s+/g,''); s = s.replace(/[^0-9\-,.]/g,''); if (s.includes(',') && s.includes('.')) s = s.replace(/,/g,''); if (s.includes(',') && !s.includes('.')) s = s.replace(',', '.'); const n = parseFloat(s); return isNaN(n) ? 0 : n; }
-function parseDateLoose(v) { const s = String(v ?? '').trim(); if (!s) return null; let d = new Date(s.replace(' ', 'T')); if (!isNaN(d.getTime())) return d; const m1 = s.match(/^(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2})(?::(\d{2}))?)?$/); if (m1) { const dd = Number(m1[1]), mm = Number(m1[2]) - 1, yy = Number(m1[3]); const hh = Number(m1[4] || 0), mi = Number(m1[5] || 0), ss = Number(m1[6] || 0); d = new Date(yy, mm, dd, hh, mi, ss); if (!isNaN(d.getTime())) return d; } const m2 = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2})(?::(\d{2}))?)?$/); if (m2) { const yy = Number(m2[1]), mm = Number(m2[2]) - 1, dd = Number(m2[3]); const hh = Number(m2[4] || 0), mi = Number(m2[5] || 0), ss = Number(m2[6] || 0); d = new Date(yy, mm, dd, hh, mi, ss); if (!isNaN(d.getTime())) return d; } return null; }
-function ymKey(dateObj) { return dateObj.getFullYear() + '-' + String(dateObj.getMonth() + 1).padStart(2, '0'); }
-function parseSingleOpsCSV(text) { const { delim, headers, rows } = parseCSV(text); const headersLower = headers.map(h => String(h||'').toLowerCase().trim()); const idxFecha = findHeaderIndex(headersLower, ['fecha','date','datetime']); const idxMonto = findHeaderIndex(headersLower, ['cantidad','monto','importe','amount','balance']); const idxAlias = findHeaderIndex(headersLower, ['alias','usuario','user','player','jugador','titular','cliente']); const F_idxFecha = idxFecha !== -1 ? idxFecha : 0; const F_idxMonto = idxMonto !== -1 ? idxMonto : (delim === ';' ? 2 : 3); const F_idxUser  = idxAlias !== -1 ? idxAlias : 4; const agg = new Map(); let rowsCount = 0; let maxDate = null; for (const r of rows) { if (!r || r.length === 0) continue; const usuario = cleanAliasBase(r[F_idxUser] ?? ''); if (!usuario) continue; const monto = parseNumberLoose(r[F_idxMonto] ?? ''); const fechaStr = String(r[F_idxFecha] ?? '').trim(); const fechaObj = parseDateLoose(fechaStr); rowsCount++; if (!agg.has(usuario)) agg.set(usuario, { count: 0, totalMonto: 0, lastFecha: '', lastFechaObj: null }); const it = agg.get(usuario); it.count += 1; it.totalMonto += (monto || 0); if (fechaObj && !isNaN(fechaObj.getTime())) { if (!it.lastFechaObj || fechaObj > it.lastFechaObj) { it.lastFechaObj = fechaObj; it.lastFecha = fechaStr; } if (!maxDate || fechaObj > maxDate) maxDate = fechaObj; } } return { delim, headers, rowsCount, agg, maxDate }; }
-function mergeOpsResults(results) { const finalAgg = new Map(); let totalRows = 0; let latestDate = null; let firstDelim = ''; let firstHeaders = []; for (const res of results) { totalRows += (res.rowsCount || 0); if (!firstDelim && res.delim) firstDelim = res.delim; if (!firstHeaders.length && res.headers) firstHeaders = res.headers; if (res.maxDate && (!latestDate || res.maxDate > latestDate)) latestDate = res.maxDate; for (const [alias, data] of res.agg.entries()) { if (!finalAgg.has(alias)) finalAgg.set(alias, { count: 0, totalMonto: 0, lastFecha: '', lastFechaObj: null }); const it = finalAgg.get(alias); it.count += (data.count || 0); it.totalMonto += (data.totalMonto || 0); if (data.lastFechaObj && (!it.lastFechaObj || data.lastFechaObj > it.lastFechaObj)) { it.lastFechaObj = data.lastFechaObj; it.lastFecha = data.lastFecha || ''; } } } return { delim: firstDelim, headers: firstHeaders, rowsCount: totalRows, agg: finalAgg, maxDate: latestDate }; }
-function parseContactsCSV(text) { const { delim, headers, rows } = parseCSV(text); const headersLower = headers.map(h => String(h||'').toLowerCase().trim()); const idxNumber = findHeaderIndex(headersLower, ['number','telefono','tel','phone']); const idxName   = findHeaderIndex(headersLower, ['name','nombre']); const idxEmail  = findHeaderIndex(headersLower, ['email']); const idxTags   = findHeaderIndex(headersLower, ['tags']); const idxMeta   = findHeaderIndex(headersLower, ['metadata']); const contacts = []; for (const r of rows) { if (!r || r.length === 0) continue; const number = String(r[idxNumber] ?? '').trim(); const name = String(r[idxName] ?? '').trim(); if (!number && !name) continue; contacts.push({ number, name, email: String(r[idxEmail] ?? '').trim(), tags: String(r[idxTags] ?? '').trim(), metadata: String(r[idxMeta] ?? '').trim(), alias: getAliasFromContactName(name) }); } return { delim, headers, contacts, okHeader: (idxNumber !== -1 && idxName !== -1) }; }
-function monthDiff(refDate, targetDate) { return (refDate.getFullYear() - targetDate.getFullYear()) * 12 + (refDate.getMonth() - targetDate.getMonth()); }
-function buildMerged(contacts, opsAgg, maxDate) { let matchActivos = 0, noActivos = 0, warmCount = 0, coldCount = 0; const refDate = maxDate && !isNaN(maxDate.getTime()) ? maxDate : new Date(); const merged = contacts.map(c => { const op = c.alias && opsAgg.has(c.alias) ? opsAgg.get(c.alias) : null; let status = 'A CONTACTAR', segment = 'FRIO', opsCount = 0, opsMonto = 0, lastFecha = ''; if (op) { opsCount = op.count || 0; opsMonto = op.totalMonto || 0; lastFecha = op.lastFecha || ''; let monthsBack = null; if (op.lastFechaObj && !isNaN(op.lastFechaObj.getTime())) monthsBack = monthDiff(refDate, op.lastFechaObj); if (monthsBack === 0) { status = 'JUGANDO'; segment = 'ACTIVO'; matchActivos++; } else if (monthsBack === 1) { status = 'A CONTACTAR'; segment = 'TIBIO'; noActivos++; warmCount++; } else { noActivos++; coldCount++; } } else { noActivos++; coldCount++; } return { ...c, status, segment, opsCount, opsMonto, lastFecha }; }); let activeSetSize = 0; for (const [, op] of opsAgg.entries()) if (op.lastFechaObj && monthDiff(refDate, op.lastFechaObj) === 0) activeSetSize++; return { merged, activeSetSize, matchActivos, noActivos, warmCount, coldCount, latestMonthLabel: ymKey(refDate) }; }
-function csvEscape(v) { const s = String(v ?? ''); return '"' + s.replace(/"/g,'""') + '"'; }
-function exportPlanillaBlanca(merged, onlyNoAct, maxRows) { let rows = merged.slice(); if (onlyNoAct) rows = rows.filter(r => r.status === 'A CONTACTAR'); if (maxRows > 0) rows = rows.slice(0, maxRows); const headers = 'usuarios,estado de revision,,estado actual,"VISTO, RESPONDIDO?",RECUPERADO,TURNO DE LAS CARGAS,interesado en jugar?,ya contactados,recuperados!,actualmente cargando,TURNO MAÑANA,TURNO TARDE,TURNO NOCHE,contactos a borrar,telefono,segmento\n'; const estadoRevision = (r) => r.status === 'JUGANDO' ? 'JUGANDO' : 'A CONTACTAR'; let csv = headers; const actualmenteJugando = rows.filter(r => r.status === 'JUGANDO').map(r => (r.alias || r.name || '')); const maxLength = Math.max(rows.length, actualmenteJugando.length); for (let i=0;i<maxLength;i++){ const r = rows[i]; const usuario = r ? (r.alias || r.name || '') : ''; const est = r ? estadoRevision(r) : ''; const phone = r ? (r.number ? (r.number.startsWith('+') ? r.number : ('+'+r.number)) : '') : ''; const segment = r ? (r.segment || '') : ''; const line = [ r ? csvEscape(usuario) : '', r ? csvEscape(est) : '', '', r ? csvEscape(est) : '', csvEscape('NO'), csvEscape('NO'), '', csvEscape('NO'), csvEscape(''), csvEscape(''), csvEscape(actualmenteJugando[i] || ''), csvEscape(''), csvEscape(''), csvEscape(''), csvEscape(''), csvEscape(phone), csvEscape(segment) ].join(','); csv += line + '\n'; } return csv; }
-function exportWhaticketCSV(merged, onlyNoAct, maxRows=0) { let rows = merged.slice(); if (onlyNoAct) rows = rows.filter(r => r.status === 'A CONTACTAR'); if (maxRows > 0) rows = rows.slice(0, maxRows); let csv = 'number,name,email,tags,metadata\n'; for (const r of rows) { let tags = (r.tags || '').trim(); let add = 'A_CONTACTAR_FRIO'; if (r.status === 'JUGANDO') add = 'ACTIVO'; else if (r.segment === 'TIBIO') add = 'A_CONTACTAR_TIBIO'; const tagsArr = tags ? tags.split(',').map(t=>t.trim()).filter(Boolean) : []; if (!tagsArr.some(t => t.toLowerCase() === add.toLowerCase())) tagsArr.push(add); tags = tagsArr.join(','); csv += [ csvEscape(r.number || ''), csvEscape(r.name || ''), csvEscape(r.email || ''), csvEscape(tags), csvEscape(r.metadata || '') ].join(',') + '\n'; } return csv; }
-self.onmessage = (ev) => { const { type, opsTexts, contactsText, onlyNoAct, exportMaxRows } = ev.data || {}; if (type === 'PROCESS') { const opsResults = (opsTexts || []).map(t => parseSingleOpsCSV(t)); const ops = mergeOpsResults(opsResults); const contacts = parseContactsCSV(contactsText); const mergedPack = buildMerged(contacts.contacts, ops.agg, ops.maxDate); STATE.merged = mergedPack.merged; STATE.activeSetSize = mergedPack.activeSetSize; STATE.contactsCount = contacts.contacts.length; STATE.matchActivos = mergedPack.matchActivos; STATE.noActivos = mergedPack.noActivos; STATE.warmCount = mergedPack.warmCount; STATE.coldCount = mergedPack.coldCount; STATE.opsRows = ops.rowsCount; STATE.latestMonthLabel = mergedPack.latestMonthLabel; STATE.debug = { ops_delim: ops.delim, contacts_delim: contacts.delim, contacts_header_ok: contacts.okHeader, ops_headers: ops.headers }; const previewLimit = 1200; const preview = STATE.merged.slice(0, previewLimit); self.postMessage({ type:'PROCESS_DONE', stats: { contacts: STATE.contactsCount, opsActivos: STATE.activeSetSize, matchActivos: STATE.matchActivos, noActivos: STATE.noActivos, warmCount: STATE.warmCount, coldCount: STATE.coldCount, opsRows: STATE.opsRows, latestMonthLabel: STATE.latestMonthLabel }, debug: STATE.debug, preview, previewLimit }); return; } if (type === 'EXPORT_PLANILLA') { self.postMessage({ type:'EXPORT_PLANILLA_DONE', csv: exportPlanillaBlanca(STATE.merged, !!onlyNoAct, exportMaxRows || 0) }); return; } if (type === 'EXPORT_WTK') { self.postMessage({ type:'EXPORT_WTK_DONE', csv: exportWhaticketCSV(STATE.merged, !!onlyNoAct, exportMaxRows || 0) }); return; } };
+let STATE = {
+  merged: [],
+  activeSetSize: 0,
+  contactsCount: 0,
+  matchActivos: 0,
+  noActivos: 0,
+  warmCount: 0,
+  coldCount: 0,
+  opsRows: 0,
+  latestMonthLabel: '',
+  debug: {}
+};
+
+function detectDelimiter(text) {
+  const lines = String(text || '')
+    .replace(/\\r\\n/g, '\\n')
+    .replace(/\\r/g, '\\n')
+    .split('\\n')
+    .filter(l => l.trim() !== '');
+
+  if (/^sep=;/i.test(lines[0] || '')) return ';';
+  if (/^sep=,/i.test(lines[0] || '')) return ',';
+
+  const head = lines.slice(0, 5).join('\\n');
+  const commas = (head.match(/,/g) || []).length;
+  const semis = (head.match(/;/g) || []).length;
+  return semis > commas ? ';' : ',';
+}
+
+function parseCSVLine(line, delim) {
+  const result = [];
+  let cur = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+
+    if (ch === '"') {
+      if (inQuotes && line[i+1] === '"') {
+        cur += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (ch === delim && !inQuotes) {
+      result.push(cur);
+      cur = '';
+      continue;
+    }
+
+    cur += ch;
+  }
+
+  result.push(cur);
+  return result;
+}
+
+function parseCSV(text) {
+  const clean = String(text || '').replace(/\\uFEFF/g, '');
+  const delim = detectDelimiter(clean);
+
+  const lines = clean
+    .replace(/\\r\\n/g, '\\n')
+    .replace(/\\r/g, '\\n')
+    .split('\\n')
+    .filter(l => l.trim() !== '');
+
+  const filtered = lines.filter(l => !/^sep=/i.test(l.trim()));
+  if (filtered.length === 0) return { delim, headers: [], rows: [] };
+
+  const headers = parseCSVLine(filtered[0], delim).map(h => String(h || '').trim());
+  const rows = filtered.slice(1).map(l => parseCSVLine(l, delim));
+  return { delim, headers, rows };
+}
+
+function findHeaderIndex(headersLower, candidates) {
+  for (let i = 0; i < headersLower.length; i++) {
+    const h = headersLower[i];
+    if (candidates.some(c => h === c || h.includes(c))) return i;
+  }
+  return -1;
+}
+
+function cleanAliasBase(s) {
+  if (!s) return '';
+  return String(s)
+    .toLowerCase()
+    .trim()
+    .replace(/\\uFEFF/g, '')
+    .replace(/\\s+/g, ' ')
+    .replace(/["']/g, '')
+    .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
+}
+
+function getAliasFromContactName(name) {
+  const raw = cleanAliasBase(name);
+  if (!raw) return '';
+  if (raw.includes('//')) return cleanAliasBase(raw.split('//')[0]);
+  return raw;
+}
+
+function parseNumberLoose(v) {
+  let s = String(v ?? '').trim();
+  if (!s) return 0;
+
+  s = s.replace(/\\s+/g, '');
+  s = s.replace(/[^0-9\\-,.]/g, '');
+
+  if (s.includes(',') && s.includes('.')) s = s.replace(/,/g, '');
+  if (s.includes(',') && !s.includes('.')) s = s.replace(',', '.');
+
+  const n = parseFloat(s);
+  return isNaN(n) ? 0 : n;
+}
+
+function parseDateLoose(v) {
+  const s = String(v ?? '').trim();
+  if (!s) return null;
+
+  let d = new Date(s.replace(' ', 'T'));
+  if (!isNaN(d.getTime())) return d;
+
+  const m1 = s.match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})(?:\\s+(\\d{2}):(\\d{2})(?::(\\d{2}))?)?$/);
+  if (m1) {
+    const dd = Number(m1[1]);
+    const mm = Number(m1[2]) - 1;
+    const yy = Number(m1[3]);
+    const hh = Number(m1[4] || 0);
+    const mi = Number(m1[5] || 0);
+    const ss = Number(m1[6] || 0);
+    d = new Date(yy, mm, dd, hh, mi, ss);
+    if (!isNaN(d.getTime())) return d;
+  }
+
+  const m2 = s.match(/^(\\d{4})-(\\d{2})-(\\d{2})(?:\\s+(\\d{2}):(\\d{2})(?::(\\d{2}))?)?$/);
+  if (m2) {
+    const yy = Number(m2[1]);
+    const mm = Number(m2[2]) - 1;
+    const dd = Number(m2[3]);
+    const hh = Number(m2[4] || 0);
+    const mi = Number(m2[5] || 0);
+    const ss = Number(m2[6] || 0);
+    d = new Date(yy, mm, dd, hh, mi, ss);
+    if (!isNaN(d.getTime())) return d;
+  }
+
+  return null;
+}
+
+function ymKey(dateObj) {
+  return dateObj.getFullYear() + '-' + String(dateObj.getMonth() + 1).padStart(2, '0');
+}
+
+function parseSingleOpsCSV(text) {
+  const { delim, headers, rows } = parseCSV(text);
+  const headersLower = headers.map(h => String(h || '').toLowerCase().trim());
+
+  const idxFecha = findHeaderIndex(headersLower, ['fecha','date','datetime']);
+  const idxMonto = findHeaderIndex(headersLower, ['cantidad','monto','importe','amount','balance']);
+  const idxAlias = findHeaderIndex(headersLower, ['alias','usuario','user','player','jugador','titular','cliente']);
+
+  const F_idxFecha = idxFecha !== -1 ? idxFecha : 0;
+  const F_idxMonto = idxMonto !== -1 ? idxMonto : (delim === ';' ? 2 : 3);
+  const F_idxUser = idxAlias !== -1 ? idxAlias : 4;
+
+  const agg = new Map();
+  let rowsCount = 0;
+  let maxDate = null;
+
+  for (const r of rows) {
+    if (!r || r.length === 0) continue;
+
+    const usuario = cleanAliasBase(r[F_idxUser] ?? '');
+    if (!usuario) continue;
+
+    const monto = parseNumberLoose(r[F_idxMonto] ?? '');
+    const fechaStr = String(r[F_idxFecha] ?? '').trim();
+    const fechaObj = parseDateLoose(fechaStr);
+
+    rowsCount++;
+
+    if (!agg.has(usuario)) {
+      agg.set(usuario, {
+        count: 0,
+        totalMonto: 0,
+        lastFecha: '',
+        lastFechaObj: null
+      });
+    }
+
+    const it = agg.get(usuario);
+    it.count += 1;
+    it.totalMonto += (monto || 0);
+
+    if (fechaObj && !isNaN(fechaObj.getTime())) {
+      if (!it.lastFechaObj || fechaObj > it.lastFechaObj) {
+        it.lastFechaObj = fechaObj;
+        it.lastFecha = fechaStr;
+      }
+      if (!maxDate || fechaObj > maxDate) maxDate = fechaObj;
+    }
+  }
+
+  return { delim, headers, rowsCount, agg, maxDate };
+}
+
+function mergeOpsResults(results) {
+  const finalAgg = new Map();
+  let totalRows = 0;
+  let latestDate = null;
+  let firstDelim = '';
+  let firstHeaders = [];
+
+  for (const res of results) {
+    totalRows += (res.rowsCount || 0);
+    if (!firstDelim && res.delim) firstDelim = res.delim;
+    if (!firstHeaders.length && res.headers) firstHeaders = res.headers;
+    if (res.maxDate && (!latestDate || res.maxDate > latestDate)) latestDate = res.maxDate;
+
+    for (const [alias, data] of res.agg.entries()) {
+      if (!finalAgg.has(alias)) {
+        finalAgg.set(alias, {
+          count: 0,
+          totalMonto: 0,
+          lastFecha: '',
+          lastFechaObj: null
+        });
+      }
+
+      const it = finalAgg.get(alias);
+      it.count += (data.count || 0);
+      it.totalMonto += (data.totalMonto || 0);
+
+      if (data.lastFechaObj && (!it.lastFechaObj || data.lastFechaObj > it.lastFechaObj)) {
+        it.lastFechaObj = data.lastFechaObj;
+        it.lastFecha = data.lastFecha || '';
+      }
+    }
+  }
+
+  return {
+    delim: firstDelim,
+    headers: firstHeaders,
+    rowsCount: totalRows,
+    agg: finalAgg,
+    maxDate: latestDate
+  };
+}
+
+function parseContactsCSV(text) {
+  const { delim, headers, rows } = parseCSV(text);
+  const headersLower = headers.map(h => String(h || '').toLowerCase().trim());
+
+  const idxNumber = findHeaderIndex(headersLower, ['number','telefono','tel','phone']);
+  const idxName   = findHeaderIndex(headersLower, ['name','nombre']);
+  const idxEmail  = findHeaderIndex(headersLower, ['email']);
+  const idxTags   = findHeaderIndex(headersLower, ['tags']);
+  const idxMeta   = findHeaderIndex(headersLower, ['metadata']);
+
+  const contacts = [];
+
+  for (const r of rows) {
+    if (!r || r.length === 0) continue;
+
+    const number = String(r[idxNumber] ?? '').trim();
+    const name = String(r[idxName] ?? '').trim();
+    if (!number && !name) continue;
+
+    contacts.push({
+      number,
+      name,
+      email: String(r[idxEmail] ?? '').trim(),
+      tags: String(r[idxTags] ?? '').trim(),
+      metadata: String(r[idxMeta] ?? '').trim(),
+      alias: getAliasFromContactName(name)
+    });
+  }
+
+  return {
+    delim,
+    headers,
+    contacts,
+    okHeader: (idxNumber !== -1 && idxName !== -1)
+  };
+}
+
+function monthDiff(refDate, targetDate) {
+  return (refDate.getFullYear() - targetDate.getFullYear()) * 12 + (refDate.getMonth() - targetDate.getMonth());
+}
+
+function buildMerged(contacts, opsAgg, maxDate) {
+  let matchActivos = 0;
+  let noActivos = 0;
+  let warmCount = 0;
+  let coldCount = 0;
+
+  const refDate = maxDate && !isNaN(maxDate.getTime()) ? maxDate : new Date();
+
+  const merged = contacts.map(c => {
+    const op = c.alias && opsAgg.has(c.alias) ? opsAgg.get(c.alias) : null;
+
+    let status = 'A CONTACTAR';
+    let segment = 'FRIO';
+    let opsCount = 0;
+    let opsMonto = 0;
+    let lastFecha = '';
+
+    if (op) {
+      opsCount = op.count || 0;
+      opsMonto = op.totalMonto || 0;
+      lastFecha = op.lastFecha || '';
+
+      let monthsBack = null;
+      if (op.lastFechaObj && !isNaN(op.lastFechaObj.getTime())) {
+        monthsBack = monthDiff(refDate, op.lastFechaObj);
+      }
+
+      if (monthsBack === 0) {
+        status = 'JUGANDO';
+        segment = 'ACTIVO';
+        matchActivos++;
+      } else if (monthsBack === 1) {
+        status = 'A CONTACTAR';
+        segment = 'TIBIO';
+        noActivos++;
+        warmCount++;
+      } else {
+        noActivos++;
+        coldCount++;
+      }
+    } else {
+      noActivos++;
+      coldCount++;
+    }
+
+    return {
+      ...c,
+      status,
+      segment,
+      opsCount,
+      opsMonto,
+      lastFecha
+    };
+  });
+
+  let activeSetSize = 0;
+  for (const [, op] of opsAgg.entries()) {
+    if (op.lastFechaObj && monthDiff(refDate, op.lastFechaObj) === 0) activeSetSize++;
+  }
+
+  return {
+    merged,
+    activeSetSize,
+    matchActivos,
+    noActivos,
+    warmCount,
+    coldCount,
+    latestMonthLabel: ymKey(refDate)
+  };
+}
+
+function csvEscape(v) {
+  const s = String(v ?? '');
+  return '"' + s.replace(/"/g, '""') + '"';
+}
+
+function exportPlanillaBlanca(merged, onlyNoAct, maxRows) {
+  let rows = merged.slice();
+  if (onlyNoAct) rows = rows.filter(r => r.status === 'A CONTACTAR');
+  if (maxRows > 0) rows = rows.slice(0, maxRows);
+
+  const headers = 'usuarios,estado de revision,,estado actual,"VISTO, RESPONDIDO?",RECUPERADO,TURNO DE LAS CARGAS,interesado en jugar?,ya contactados,recuperados!,actualmente cargando,TURNO MAÑANA,TURNO TARDE,TURNO NOCHE,contactos a borrar,telefono,segmento\\n';
+
+  const estadoRevision = (r) => r.status === 'JUGANDO' ? 'JUGANDO' : 'A CONTACTAR';
+
+  let csv = headers;
+  const actualmenteJugando = rows.filter(r => r.status === 'JUGANDO').map(r => (r.alias || r.name || ''));
+  const maxLength = Math.max(rows.length, actualmenteJugando.length);
+
+  for (let i = 0; i < maxLength; i++) {
+    const r = rows[i];
+    const usuario = r ? (r.alias || r.name || '') : '';
+    const est = r ? estadoRevision(r) : '';
+    const phone = r ? (r.number ? (r.number.startsWith('+') ? r.number : ('+' + r.number)) : '') : '';
+    const segment = r ? (r.segment || '') : '';
+
+    const line = [
+      r ? csvEscape(usuario) : '',
+      r ? csvEscape(est) : '',
+      '',
+      r ? csvEscape(est) : '',
+      csvEscape('NO'),
+      csvEscape('NO'),
+      '',
+      csvEscape('NO'),
+      csvEscape(''),
+      csvEscape(''),
+      csvEscape(actualmenteJugando[i] || ''),
+      csvEscape(''),
+      csvEscape(''),
+      csvEscape(''),
+      csvEscape(''),
+      csvEscape(phone),
+      csvEscape(segment)
+    ].join(',');
+
+    csv += line + '\\n';
+  }
+
+  return csv;
+}
+
+function exportWhaticketCSV(merged, onlyNoAct, maxRows = 0) {
+  let rows = merged.slice();
+  if (onlyNoAct) rows = rows.filter(r => r.status === 'A CONTACTAR');
+  if (maxRows > 0) rows = rows.slice(0, maxRows);
+
+  let csv = 'number,name,email,tags,metadata\\n';
+
+  for (const r of rows) {
+    let tags = (r.tags || '').trim();
+
+    let add = 'A_CONTACTAR_FRIO';
+    if (r.status === 'JUGANDO') add = 'ACTIVO';
+    else if (r.segment === 'TIBIO') add = 'A_CONTACTAR_TIBIO';
+
+    const tagsArr = tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [];
+    if (!tagsArr.some(t => t.toLowerCase() === add.toLowerCase())) tagsArr.push(add);
+    tags = tagsArr.join(',');
+
+    csv += [
+      csvEscape(r.number || ''),
+      csvEscape(r.name || ''),
+      csvEscape(r.email || ''),
+      csvEscape(tags),
+      csvEscape(r.metadata || '')
+    ].join(',') + '\\n';
+  }
+
+  return csv;
+}
+
+self.onmessage = (ev) => {
+  const { type, opsTexts, contactsText, onlyNoAct, exportMaxRows } = ev.data || {};
+
+  if (type === 'PROCESS') {
+    const opsResults = (opsTexts || []).map(t => parseSingleOpsCSV(t));
+    const ops = mergeOpsResults(opsResults);
+    const contacts = parseContactsCSV(contactsText);
+    const mergedPack = buildMerged(contacts.contacts, ops.agg, ops.maxDate);
+
+    STATE.merged = mergedPack.merged;
+    STATE.activeSetSize = mergedPack.activeSetSize;
+    STATE.contactsCount = contacts.contacts.length;
+    STATE.matchActivos = mergedPack.matchActivos;
+    STATE.noActivos = mergedPack.noActivos;
+    STATE.warmCount = mergedPack.warmCount;
+    STATE.coldCount = mergedPack.coldCount;
+    STATE.opsRows = ops.rowsCount;
+    STATE.latestMonthLabel = mergedPack.latestMonthLabel;
+    STATE.debug = {
+      ops_delim: ops.delim,
+      contacts_delim: contacts.delim,
+      contacts_header_ok: contacts.okHeader,
+      ops_headers: ops.headers
+    };
+
+    const previewLimit = 1200;
+    const preview = STATE.merged.slice(0, previewLimit);
+
+    self.postMessage({
+      type:'PROCESS_DONE',
+      stats: {
+        contacts: STATE.contactsCount,
+        opsActivos: STATE.activeSetSize,
+        matchActivos: STATE.matchActivos,
+        noActivos: STATE.noActivos,
+        warmCount: STATE.warmCount,
+        coldCount: STATE.coldCount,
+        opsRows: STATE.opsRows,
+        latestMonthLabel: STATE.latestMonthLabel
+      },
+      debug: STATE.debug,
+      preview,
+      previewLimit
+    });
+    return;
+  }
+
+  if (type === 'EXPORT_PLANILLA') {
+    self.postMessage({
+      type:'EXPORT_PLANILLA_DONE',
+      csv: exportPlanillaBlanca(STATE.merged, !!onlyNoAct, exportMaxRows || 0)
+    });
+    return;
+  }
+
+  if (type === 'EXPORT_WTK') {
+    self.postMessage({
+      type:'EXPORT_WTK_DONE',
+      csv: exportWhaticketCSV(STATE.merged, !!onlyNoAct, exportMaxRows || 0)
+    });
+    return;
+  }
+};
 `;
+
 const worker = new Worker(URL.createObjectURL(new Blob([workerCode], {type:'text/javascript'})));
-let App = { view: 'all', stats: { contacts:0, opsActivos:0, matchActivos:0, noActivos:0, warmCount:0, coldCount:0, opsRows:0, latestMonthLabel:'' }, debug: {}, preview: [], previewLimit: 1200 };
+
+let App = {
+  view: 'all',
+  stats: {
+    contacts:0,
+    opsActivos:0,
+    matchActivos:0,
+    noActivos:0,
+    warmCount:0,
+    coldCount:0,
+    opsRows:0,
+    latestMonthLabel:''
+  },
+  debug: {},
+  preview: [],
+  previewLimit: 1200
+};
+
 function render() {
-  document.getElementById('statContacts').textContent = (App.stats.contacts||0).toLocaleString('es-AR');
-  document.getElementById('statOpsActivos').textContent = (App.stats.opsActivos||0).toLocaleString('es-AR');
-  document.getElementById('statMatchActivos').textContent = (App.stats.matchActivos||0).toLocaleString('es-AR');
-  document.getElementById('statNoActivos').textContent = (App.stats.noActivos||0).toLocaleString('es-AR');
-  document.getElementById('statWarm').textContent = (App.stats.warmCount||0).toLocaleString('es-AR');
-  document.getElementById('statCold').textContent = (App.stats.coldCount||0).toLocaleString('es-AR');
+  document.getElementById('statContacts').textContent = (App.stats.contacts || 0).toLocaleString('es-AR');
+  document.getElementById('statOpsActivos').textContent = (App.stats.opsActivos || 0).toLocaleString('es-AR');
+  document.getElementById('statMatchActivos').textContent = (App.stats.matchActivos || 0).toLocaleString('es-AR');
+  document.getElementById('statNoActivos').textContent = (App.stats.noActivos || 0).toLocaleString('es-AR');
+  document.getElementById('statWarm').textContent = (App.stats.warmCount || 0).toLocaleString('es-AR');
+  document.getElementById('statCold').textContent = (App.stats.coldCount || 0).toLocaleString('es-AR');
+
   const dbg = document.getElementById('showDebug').checked;
-  const dbgLine = dbg ? `<div style="margin-top:8px"><b>Debug:</b> ops_delim="${escapeHtml(App.debug.ops_delim)}" • contacts_delim="${escapeHtml(App.debug.contacts_delim)}" • contacts_header_ok=${App.debug.contacts_header_ok ? 'true' : 'false'}</div>` : '';
-  document.getElementById('summary').innerHTML = `<b>Procesado</b><br/>Ops: <b>${(App.stats.opsRows||0).toLocaleString('es-AR')}</b> registros • <b>${(App.stats.opsActivos||0).toLocaleString('es-AR')}</b> usuarios activos del mes más reciente cargado.<br/>Mes de referencia detectado: <b>${escapeHtml(App.stats.latestMonthLabel || '—')}</b><br/>Contacts: <b>${(App.stats.contacts||0).toLocaleString('es-AR')}</b> filas.<br/>Vista: <b>${ App.view === 'all' ? 'Todos' : (App.view === 'active' ? 'JUGANDO' : (App.view === 'warm' ? 'TIBIOS' : 'FRÍOS / A CONTACTAR')) }</b>. ${dbgLine}`;
+  const dbgLine = dbg
+    ? `<div style="margin-top:8px"><b>Debug:</b> ops_delim="${escapeHtml(App.debug.ops_delim)}" • contacts_delim="${escapeHtml(App.debug.contacts_delim)}" • contacts_header_ok=${App.debug.contacts_header_ok ? 'true' : 'false'}</div>`
+    : '';
+
+  document.getElementById('summary').innerHTML = `
+    <b>Procesado</b><br/>
+    Ops: <b>${(App.stats.opsRows || 0).toLocaleString('es-AR')}</b> registros •
+    <b>${(App.stats.opsActivos || 0).toLocaleString('es-AR')}</b> usuarios activos del mes más reciente cargado.<br/>
+    Mes de referencia detectado: <b>${escapeHtml(App.stats.latestMonthLabel || '—')}</b><br/>
+    Contacts: <b>${(App.stats.contacts || 0).toLocaleString('es-AR')}</b> filas.<br/>
+    Vista: <b>${
+      App.view === 'all'
+        ? 'Todos'
+        : (App.view === 'active'
+          ? 'JUGANDO'
+          : (App.view === 'warm' ? 'TIBIOS' : 'FRÍOS / A CONTACTAR'))
+    }</b>.
+    ${dbgLine}
+  `;
+
   let showing = App.preview.slice();
   if (App.view === 'active') showing = showing.filter(r => r.status === 'JUGANDO');
   if (App.view === 'warm') showing = showing.filter(r => r.segment === 'TIBIO');
   if (App.view === 'inactive') showing = showing.filter(r => r.status === 'A CONTACTAR' && r.segment === 'FRIO');
+
   let html = `<div class="pill">Mostrando preview: ${showing.length.toLocaleString('es-AR')} filas (máx ${App.previewLimit}). Exporta completo sin preview.</div>`;
   html += `<table><thead><tr><th>Alias</th><th>Teléfono</th><th>Estado</th><th>Segmento</th><th>Ops totales</th><th>Monto total</th><th>Última fecha</th><th>Tags</th></tr></thead><tbody>`;
+
   for (const r of showing) {
-    const badge = r.status === 'JUGANDO' ? `<span class="badge b-active">JUGANDO</span>` : `<span class="badge b-inactive">A CONTACTAR</span>`;
-    const segBadge = r.segment === 'ACTIVO' ? `<span class="badge b-active">ACTIVO</span>` : (r.segment === 'TIBIO' ? `<span class="badge b-warm">TIBIO</span>` : `<span class="badge b-inactive">FRÍO</span>`);
-    const phone = r.number ? (r.number.startsWith('+') ? r.number : ('+'+r.number)) : '';
-    html += `<tr><td>${escapeHtml(r.alias || '')}</td><td>${escapeHtml(phone)}</td><td>${badge}</td><td>${segBadge}</td><td>${(r.opsCount||0).toLocaleString('es-AR')}</td><td>$${(r.opsMonto||0).toLocaleString('es-AR')}</td><td>${escapeHtml(r.lastFecha || '')}</td><td>${escapeHtml(r.tags || '')}</td></tr>`;
+    const badge = r.status === 'JUGANDO'
+      ? `<span class="badge b-active">JUGANDO</span>`
+      : `<span class="badge b-inactive">A CONTACTAR</span>`;
+
+    const segBadge = r.segment === 'ACTIVO'
+      ? `<span class="badge b-active">ACTIVO</span>`
+      : (r.segment === 'TIBIO'
+        ? `<span class="badge b-warm">TIBIO</span>`
+        : `<span class="badge b-inactive">FRÍO</span>`);
+
+    const phone = r.number ? (r.number.startsWith('+') ? r.number : ('+' + r.number)) : '';
+
+    html += `<tr>
+      <td>${escapeHtml(r.alias || '')}</td>
+      <td>${escapeHtml(phone)}</td>
+      <td>${badge}</td>
+      <td>${segBadge}</td>
+      <td>${(r.opsCount || 0).toLocaleString('es-AR')}</td>
+      <td>$${(r.opsMonto || 0).toLocaleString('es-AR')}</td>
+      <td>${escapeHtml(r.lastFecha || '')}</td>
+      <td>${escapeHtml(r.tags || '')}</td>
+    </tr>`;
   }
+
   html += `</tbody></table>`;
   document.getElementById('results').innerHTML = html;
 }
+
 worker.onmessage = (ev) => {
   const msg = ev.data || {};
-  if (msg.type === 'PROCESS_DONE') { App.stats = msg.stats || App.stats; App.debug = msg.debug || {}; App.preview = msg.preview || []; App.previewLimit = msg.previewLimit || 1200; if (document.getElementById('showDebug').checked) console.log('DEBUG', {stats: App.stats, debug: App.debug}); render(); showToast('Listo — comparación lista', 1600); }
-  if (msg.type === 'EXPORT_PLANILLA_DONE') { downloadFile(msg.csv || '', `planilla_exportada_${new Date().toISOString().slice(0,10)}.csv`, 'text/csv;charset=utf-8;'); showToast('Planilla Blanca exportada'); }
-  if (msg.type === 'EXPORT_WTK_DONE') { downloadFile(msg.csv || '', `whaticket_tags_${new Date().toISOString().slice(0,10)}.csv`, 'text/csv;charset=utf-8;'); showToast('CSV Whaticket exportado'); }
+
+  if (msg.type === 'PROCESS_DONE') {
+    App.stats = msg.stats || App.stats;
+    App.debug = msg.debug || {};
+    App.preview = msg.preview || [];
+    App.previewLimit = msg.previewLimit || 1200;
+
+    if (document.getElementById('showDebug').checked) {
+      console.log('DEBUG', { stats: App.stats, debug: App.debug });
+    }
+
+    render();
+    showToast('Listo — comparación lista', 1600);
+  }
+
+  if (msg.type === 'EXPORT_PLANILLA_DONE') {
+    downloadFile(
+      msg.csv || '',
+      `planilla_exportada_${new Date().toISOString().slice(0,10)}.csv`,
+      'text/csv;charset=utf-8;'
+    );
+    showToast('Planilla Blanca exportada');
+  }
+
+  if (msg.type === 'EXPORT_WTK_DONE') {
+    downloadFile(
+      msg.csv || '',
+      `whaticket_tags_${new Date().toISOString().slice(0,10)}.csv`,
+      'text/csv;charset=utf-8;'
+    );
+    showToast('CSV Whaticket exportado');
+  }
 };
+
 document.getElementById('processBtn').addEventListener('click', async () => {
   const fContacts = document.getElementById('fileContacts').files[0];
-  if (!fContacts || !opsFilesSelected.length) return showToast('Cargá contactos WTK y al menos un CSV de operaciones', 2800);
+
+  if (!fContacts || !opsFilesSelected.length) {
+    return showToast('Cargá contactos WTK y al menos un CSV de operaciones', 2800);
+  }
+
   showToast('Procesando en background (Worker)…', 8000);
-  try { const contactsText = await readFileText(fContacts); const opsTexts = await Promise.all(opsFilesSelected.map(f => readFileText(f))); worker.postMessage({ type:'PROCESS', opsTexts, contactsText }); } catch (e) { console.error(e); showToast('Error leyendo archivos', 3000); alert('Error: ' + (e && e.message ? e.message : e)); }
+
+  try {
+    const contactsText = await readFileText(fContacts);
+    const opsTexts = await Promise.all(opsFilesSelected.map(f => readFileText(f)));
+    worker.postMessage({ type:'PROCESS', opsTexts, contactsText });
+  } catch (e) {
+    console.error(e);
+    showToast('Error leyendo archivos', 3000);
+    alert('Error: ' + (e && e.message ? e.message : e));
+  }
 });
-document.getElementById('viewAllBtn').addEventListener('click', () => { App.view='all'; render(); });
-document.getElementById('viewActivosBtn').addEventListener('click', () => { App.view='active'; render(); });
-document.getElementById('viewWarmBtn').addEventListener('click', () => { App.view='warm'; render(); });
-document.getElementById('viewNoActivosBtn').addEventListener('click', () => { App.view='inactive'; render(); });
-document.getElementById('exportPlanillaBtn').addEventListener('click', () => { if (!App.preview || App.preview.length === 0) return showToast('Primero procesá los archivos', 2000); const onlyNoAct = document.getElementById('exportOnlyNoActivos').checked; const exportMaxRows = parseInt(document.getElementById('limitRows').value, 10) || 0; worker.postMessage({ type:'EXPORT_PLANILLA', onlyNoAct, exportMaxRows }); });
-document.getElementById('exportWhaticketBtn').addEventListener('click', () => { if (!App.preview || App.preview.length === 0) return showToast('Primero procesá los archivos', 2000); const onlyNoAct = document.getElementById('exportOnlyNoActivos').checked; const exportMaxRows = parseInt(document.getElementById('limitRows').value, 10) || 0; worker.postMessage({ type:'EXPORT_WTK', onlyNoAct, exportMaxRows }); });
-renderOpsFilesList(); render();
+
+document.getElementById('viewAllBtn').addEventListener('click', () => {
+  App.view = 'all';
+  render();
+});
+
+document.getElementById('viewActivosBtn').addEventListener('click', () => {
+  App.view = 'active';
+  render();
+});
+
+document.getElementById('viewWarmBtn').addEventListener('click', () => {
+  App.view = 'warm';
+  render();
+});
+
+document.getElementById('viewNoActivosBtn').addEventListener('click', () => {
+  App.view = 'inactive';
+  render();
+});
+
+document.getElementById('exportPlanillaBtn').addEventListener('click', () => {
+  if (!App.preview || App.preview.length === 0) return showToast('Primero procesá los archivos', 2000);
+  const onlyNoAct = document.getElementById('exportOnlyNoActivos').checked;
+  const exportMaxRows = parseInt(document.getElementById('limitRows').value, 10) || 0;
+  worker.postMessage({ type:'EXPORT_PLANILLA', onlyNoAct, exportMaxRows });
+});
+
+document.getElementById('exportWhaticketBtn').addEventListener('click', () => {
+  if (!App.preview || App.preview.length === 0) return showToast('Primero procesá los archivos', 2000);
+  const onlyNoAct = document.getElementById('exportOnlyNoActivos').checked;
+  const exportMaxRows = parseInt(document.getElementById('limitRows').value, 10) || 0;
+  worker.postMessage({ type:'EXPORT_WTK', onlyNoAct, exportMaxRows });
+});
+
+renderOpsFilesList();
+render();
 </script>
 </body>
 </html>
